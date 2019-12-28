@@ -18,3 +18,5 @@ https://api.bsv.info
 | address | 必选 |  |  | 比特币地址 |
 | limit | 可选 | 1 - 100 | 10 | 最多返回多少条结果 |
 | offset | 可选 | 0 - 0xFFFFFFFF | 0 | 跳过多少条结果 |
+| confirmed | 可选 | 0 - 1 | 1 | 是否查询已确认的utxo |
+| unconfirmed | 可选 | 0 - 1 | 0 | 是否查询未确认的utxo |
