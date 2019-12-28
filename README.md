@@ -1,6 +1,20 @@
-# BSV-info
-关于Bitcoin SV的资料
+# bsv.info
+BSV网络查询API
 
-已全部移至[Open Directory](https://dir.sv/#0cafacc9ab0fee1916f739d5fdb2fac93a9db82c118926d811d99e6903873f3e)
+## 总体介绍
+#### API URL
+https://api.bsv.info
+
+## 查询接口
+### UTXO
+
+| 方法 | URI |
+| ---- | ---- |
+| URI | /utxo |
 
 
+| 参数 | 可选/必选 | 取值范围 | 默认值 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| address | 必选 |  |  | 比特币地址 |
+| limit | 可选 | 1 - 100 | 10 | 最多返回多少条结果 |
+| offset | 可选 | 0 - 0xFFFFFFFF | 0 | 跳过多少条结果 |
