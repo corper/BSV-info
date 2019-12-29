@@ -46,9 +46,9 @@ https://api.bsv.info/utxo?address=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa&offset=10&l
 
 | 字段 | 类型 | 可选/必选 | 说明 |
 | ---- | ---- | ---- | ---- |
-| c | Array | 必选 | 已确认的UTXO列表 |
-| u | Array | 必选 | 未确认的UTXO列表，结构同已确认的UTXO列表 |
-| c.v | Unsigned Integer | 必选 | 以satoshi为单位的比特币数量 | 
+| c | Array | 必选 | Confirmed，已确认的UTXO列表 |
+| u | Array | 必选 | Unconfirmed，未确认的UTXO列表，结构同已确认的UTXO列表 |
+| c.v | Unsigned Integer | 必选 | Value，以satoshi为单位的比特币数量 | 
 | c.e | Object | 必选 | Edge，用于定位UTXO所在的TX和Output Index |
 | c.e.h | String | 必选 | Hash，TXID |
 | c.e.i | String | 必选 | Index， Output Index |
