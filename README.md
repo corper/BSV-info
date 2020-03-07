@@ -1,5 +1,6 @@
 # bsv.info
-BSV网络查询API
+BSV网络查询API。
+该服务现处于Alpha测试阶段，仅供测试使用，请勿用于生产环境。
 
 ## 总体介绍
 #### API URL
