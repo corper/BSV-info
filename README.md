@@ -45,8 +45,8 @@ data:{
 
 | 字段 | 类型 | 可选/必选 | 说明 |
 | ---- | ---- | ---- | ---- |
-| c | Array | 必选 | Confirmed，已确认的UTXO列表 |
-| u | Array | 必选 | Unconfirmed，未确认的UTXO列表，结构同已确认的UTXO列表 |
+| c | Array | 可选 | Confirmed，已确认的UTXO列表 |
+| u | Array | 可选 | Unconfirmed，未确认的UTXO列表，结构同已确认的UTXO列表 |
 | c.v | Unsigned Integer | 必选 | Value，以satoshi为单位的比特币数量 | 
 | c.h | String | 必选 | Hash，TXID |
 | c.i | String | 必选 | Index， Output Index |
