@@ -75,7 +75,7 @@ https://api.bsv.info/utxo?address=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa&offset=10&l
       "hex": "tx的HEX字符串"
     }
     ```
-#### 应答
+##### 应答
 ```JSON
 {
   "txid": "tx对应的txid"
