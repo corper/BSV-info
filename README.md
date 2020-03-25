@@ -77,6 +77,8 @@ POST body:
 ##### 应答
 ```JSON
 {
-  "txid": "tx对应的txid"
+  "data": {
+    "txid": "tx对应的txid"
+  }
 }
 ```
