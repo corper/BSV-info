@@ -9,7 +9,7 @@ BSV网络查询API。
     | 参数 | 可选/必选 | 类型 | 说明 |
     | ---- | ---- | ---- | ---- |
     | error | 可选 | string | 当出错时会返回该字段，错误内容为字段的值 |
-    | data | 可选 | object | 当没有错误时返回该字段，操作结果为该字段的 |
+    | data | 可选 | object | 当没有错误时返回该字段，携带操作结果 |
 
 ## 接口说明
 ### UTXO
@@ -68,13 +68,12 @@ https://api.bsv.info/utxo?address=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa&offset=10&l
 
 #### 示例
 ##### 请求
-* URL https://api.bsv.info/tx/broadcast
-* POST body:
-    ```JSON
-    {
-      "hex": "tx的HEX字符串"
-    }
-    ```
+POST body:
+```JSON
+{
+  "hex": "tx的HEX字符串"
+}
+```
 ##### 应答
 ```JSON
 {
