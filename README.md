@@ -126,6 +126,42 @@ https://api.bsv.info/tx/input?id=0defb1479e67fe9adc80708828a73f1476657ad3f3c89e5
 }
 ```
 
+### TX基本信息查询
+| 方法 | URI |
+| ---- | ---- |
+| GET | /tx/desc |
+
+| 参数 | 可选/必选 | 说明 |
+| ---- | ---- | ---- |
+| id | 必选 | TXID |
+
+#### 示例
+##### 请求
+https://api.bsv.info/tx/desc?id=0defb1479e67fe9adc80708828a73f1476657ad3f3c89e563796b9f37a7897b1
+##### 应答
+```JSON
+{
+  "data": {
+    "version": 1,
+    "outputsNum": 3,
+    "inputsNum": 1,
+    "nLockTime": 0,
+    "blockHash": "0000000000000000034eaca67a084df1de5b50ddebfef1c16e9fb5d90fdf6ab0",
+    "indexInBlock": 6321
+  }
+}
+```
+
+| 字段 | 类型 | 可选/必选 | 说明 |
+| ---- | ---- | ---- | ---- |
+| version | Integer | 必选 | TX version |
+| outputsNum | Unsigned Integer | 必选 | TX中outputs的数量 |
+| inputsNum | Unsigned Integer | 必选 | TX中inputs的数量 | 
+| nLockTime | Unsigned Integer | 必选 | TX的nLockTime |
+| blockHash | String | 可选 | TX所在区块的hash |
+| indexInBlock | Unsigned Integer | 可选 | TX在区块中的位置，0为起始位置 |
+
+
 ### TX广播
 
 | 方法 | URI |
