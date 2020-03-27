@@ -60,6 +60,72 @@ https://api.bsv.info/utxo?address=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa&offset=10&l
 | c.h | String | 必选 | Hash，TXID |
 | c.i | String | 必选 | Index， Output Index |
 
+### TX查询
+
+| 方法 | URI |
+| ---- | ---- |
+| GET | /tx |
+
+| 参数 | 可选/必选 | 说明 |
+| ---- | ---- | ---- |
+| id | 必选 | TXID |
+
+#### 示例
+##### 请求
+https://api.bsv.info/tx?id=4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b
+##### 应答
+```JSON
+{
+  "data": {
+    "hex": "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000"
+  }
+}
+```
+
+### output查询
+| 方法 | URI |
+| ---- | ---- |
+| GET | /tx/output |
+
+| 参数 | 可选/必选 | 说明 |
+| ---- | ---- | ---- |
+| id | 必选 | TXID |
+| index | 必选 | output index |
+
+#### 示例
+##### 请求
+https://api.bsv.info/tx/output?id=0defb1479e67fe9adc80708828a73f1476657ad3f3c89e563796b9f37a7897b1&index=1
+##### 应答
+```JSON
+{
+  "data":{
+    "hex":"22020000000000001976a914666675d887a7ae09835af934096d9fcbbb70eed288ac"
+  }
+}
+```
+
+### input查询
+| 方法 | URI |
+| ---- | ---- |
+| GET | /tx/input |
+
+| 参数 | 可选/必选 | 说明 |
+| ---- | ---- | ---- |
+| id | 必选 | TXID |
+| index | 必选 | input index |
+
+#### 示例
+##### 请求
+https://api.bsv.info/tx/input?id=0defb1479e67fe9adc80708828a73f1476657ad3f3c89e563796b9f37a7897b1&index=0
+##### 应答
+```JSON
+{
+  "data":{
+    "hex":"3f835c66077197054f04641bd1afe238a483a842fc18ee61884fcef4a63b6c9f020000006b483045022100e8cd72b69a06dfc0d356603ca0739b0f72a1af88c501cbff58b249e9837dc284022047658451c7e38b3e83e7bd47332d7561737ea6d666240ae4a0605711ac8e39ee41210295591ace9742ee4fe74403286d3a9416b2a18e76c3291816f1ca96c9eef5e8bfffffffff"
+  }
+}
+```
+
 ### TX广播
 
 | 方法 | URI |
@@ -71,14 +137,14 @@ https://api.bsv.info/utxo?address=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa&offset=10&l
 POST body:
 ```JSON
 {
-  "hex": "tx的HEX字符串"
+  "hex": "TX的HEX字符串"
 }
 ```
 ##### 应答
 ```JSON
 {
   "data": {
-    "txid": "tx对应的txid"
+    "txid": "TX对应的TXID"
   }
 }
 ```
