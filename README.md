@@ -177,7 +177,7 @@ https://api.bsv.info/tx/merkle?id=130ee351c12a2f3a370aa59675f84b342cd5e17abb290b
 ```JSON
 {
   "data": {
-    "branches": [
+    "path": [
       {
         "r": "295476074681261197a47e4c2fc08ac5972634775dda87b45d51fdeee6030001"
       },
@@ -220,10 +220,10 @@ https://api.bsv.info/tx/merkle?id=130ee351c12a2f3a370aa59675f84b342cd5e17abb290b
 
 | 字段 | 类型 | 可选/必选 | 说明 |
 | ---- | ---- | ---- | ---- |
-| branches | Array | 必选 | Merkle证明的路径。当被查询的TX为该区块中唯一的TX时，该数组为空数组。 |
-| branches[] | Object | 可选 | Merkle路径的节点 | 每个路径节点有且仅有一个属性，属性名称为l或r中的一个。 |
-| branches[].l | String | 可选 | l: left。该路径上参与计算的Hash HEX字符串，拼接在上个Hash值的左侧进行新的Hash计算 |
-| branches[].r | String | 可选 | r: right。该路径上参与计算的Hash HEX字符串，拼接在上个Hash值的右侧进行新的Hash计算 |
+| path | Array | 必选 | Merkle证明的路径。当被查询的TX为该区块中唯一的TX时，该数组为空数组。 |
+| path[] | Object | 可选 | Merkle路径的节点 | 每个路径节点有且仅有一个属性，属性名称为l或r中的一个。 |
+| path[].l | String | 可选 | l: left。该路径上参与计算的Hash HEX字符串，拼接在上个Hash值的左侧进行新的Hash计算 |
+| path[].r | String | 可选 | r: right。该路径上参与计算的Hash HEX字符串，拼接在上个Hash值的右侧进行新的Hash计算 |
 | block | Object | 必选 | 该tx所在的区块信息 |
 | block.hash | String | 必选 | 区块Hash |
 | block.height | Unsigned Integer | 必选 | 区块高度 |
