@@ -225,7 +225,7 @@ https://api.bsv.info/tx/merkle?id=130ee351c12a2f3a370aa59675f84b342cd5e17abb290b
 | branches[].l | String | 可选 | l: left。该路径上参与计算的Hash HEX字符串，拼接在上个Hash值的左侧进行新的Hash计算 |
 | branches[].r | String | 可选 | r: right。该路径上参与计算的Hash HEX字符串，拼接在上个Hash值的右侧进行新的Hash计算 |
 | block | Object | 必选 | 该tx所在的区块信息 |
-| block.hash | String | 必选 | 区块Hash ｜
+| block.hash | String | 必选 | 区块Hash |
 | block.height | Unsigned Integer | 必选 | 区块高度 |
 | block.merkleRoot | String | 必选 | 区块的Merkle Root |
 
