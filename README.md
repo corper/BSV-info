@@ -161,6 +161,75 @@ https://api.bsv.info/tx/desc?id=0defb1479e67fe9adc80708828a73f1476657ad3f3c89e56
 | blockHash | String | 可选 | TX所在区块的hash |
 | indexInBlock | Unsigned Integer | 可选 | TX在区块中的位置，0为起始位置 |
 
+### TX Merkle路径查询
+| 方法 | URI |
+| ---- | ---- |
+| GET | /tx/merkle |
+
+| 参数 | 可选/必选 | 说明 |
+| ---- | ---- | ---- |
+| id | 必选 | TXID |
+
+#### 示例
+##### 请求
+https://api.bsv.info/tx/merkle?id=130ee351c12a2f3a370aa59675f84b342cd5e17abb290b0c30946e291c109c74
+##### 应答
+```JSON
+{
+  "data": {
+    "branches": [
+      {
+        "r": "295476074681261197a47e4c2fc08ac5972634775dda87b45d51fdeee6030001"
+      },
+      {
+        "l": "f6f54457c4f67d43f11cd10d9afd9e1fce7b87d9277978d95293cebd47374c97"
+      },
+      {
+        "r": "1853b5f4251574330f9299defbbb7c917a49df5fd2bd3ab54af028f0099b1e63"
+      },
+      {
+        "l": "c18f7a0d0d46d8df1a7d20af59bf218ada88a9b22078bf2ac052a5dc66486219"
+      },
+      {
+        "r": "d216d1a24acc1aba5a67a6c3482717f7e72ade993ed0c27892dca9992078ff67"
+      },
+      {
+        "l": "d8f6509c9532ce2f8a3037134b05c01f63f4aa749914654f83730391ac320459"
+      },
+      {
+        "r": "43559fdcdabf23ed235cbd19c0cc89bcb28684b28fa39ae0365057c4026c6d7d"
+      },
+      {
+        "r": "cbc33c846ef0c5710e863ae6025bc16af76ed6cf8fc8f4ade459138f96fe1961"
+      },
+      {
+        "r": "1d5bf866bb65c31cb22f457b0d8b7d684d24631aed0946b7c4c8fc2c4a89b734"
+      },
+      {
+        "r": "df3f15ee83a7f28a09f746fd1ac61701b88c480ff63a78f8b8f89a4e5eec511b"
+      }
+    ],
+    "block": {
+      "hash": "0000000000000000012d6b3002d6dae9b32ca1aaf090a7932ac84e5d3e22aeda",
+      "height": 626000,
+      "merkleRoot": "135132b910f9943accb2727a9a3ddb01e4a3c934b48951d1562e20179f4fa8ca"
+    }
+  }
+}
+```
+
+| 字段 | 类型 | 可选/必选 | 说明 |
+| ---- | ---- | ---- | ---- |
+| branches | Array | 必选 | Merkle证明的路径。当被查询的TX为该区块中唯一的TX时，该数组为空数组。 |
+| branches[] | Object | 可选 | Merkle路径的节点 | 每个路径节点有且仅有一个属性，属性名称为l或r中的一个。 |
+| branches[].l | String | 可选 | l: left。该路径上参与计算的Hash HEX字符串，拼接在上个Hash值的左侧进行新的Hash计算 |
+| branches[].r | String | 可选 | r: right。该路径上参与计算的Hash HEX字符串，拼接在上个Hash值的右侧进行新的Hash计算 |
+| block | Object | 必选 | 该tx所在的区块信息 |
+| block.hash | String | 必选 | 区块Hash ｜
+| block.height | Unsigned Integer | 必选 | 区块高度 |
+| block.merkleRoot | String | 必选 | 区块的Merkle Root |
+
+
 
 ### TX广播
 
