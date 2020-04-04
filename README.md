@@ -56,9 +56,52 @@ https://api.bsv.info/utxo?address=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa&offset=10&l
 | ---- | ---- | ---- | ---- |
 | c | Array | 可选 | Confirmed，已确认的UTXO列表 |
 | u | Array | 可选 | Unconfirmed，未确认的UTXO列表，结构同已确认的UTXO列表 |
-| c.v | Unsigned Integer | 必选 | Value，以satoshi为单位的比特币数量 | 
+| c.v | Unsigned Integer | 必选 | Value，以satoshi为单位的比特币数量 |
 | c.h | String | 必选 | Hash，TXID |
 | c.i | String | 必选 | Index， Output Index |
+
+
+
+### 余额查询
+
+| 方法 | URI      |
+| ---- | -------- |
+| GET  | /balance |
+
+| 参数    | 可选/必选       | 说明                                          |
+| ------- | --------------- | --------------------------------------------- |
+| address | 与hash二选一    | 地址                                          |
+| hash    | 与address二选一 | 对output script进行SHA256 hash之后的hex字符串 |
+
+#### 示例
+
+##### 请求
+
+1. https://api.bsv.info/balance?address=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+
+1. https://api.bsv.info/balance?hash=6191c3b590bfcfa0475e877c302da1e323497acf3b42c08d8fa28e364edf018b
+
+上述两个请求均为查询地址`1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa`的余额。第二种方式是用P2PKH output的脚本hash来进行查询。
+
+##### 应答
+
+```json
+{
+  "data": {
+    "c": 6792931313,
+    "u": 0
+  }
+}
+```
+
+| 字段 | 类型             | 可选/必选 | 说明                            |
+| ---- | ---------------- | --------- | ------------------------------- |
+| c    | Unsigned Integer | 必选      | 已确认的余额，以satoshi为单位。 |
+| u    | Unsigned Integer | 必选      | 未确认的余额，以satoshi为单位。 |
+
+
+
+
 
 ### TX查询
 
@@ -156,7 +199,7 @@ https://api.bsv.info/tx/desc?id=0defb1479e67fe9adc80708828a73f1476657ad3f3c89e56
 | ---- | ---- | ---- | ---- |
 | version | Integer | 必选 | TX version |
 | outputsNum | Unsigned Integer | 必选 | TX中outputs的数量 |
-| inputsNum | Unsigned Integer | 必选 | TX中inputs的数量 | 
+| inputsNum | Unsigned Integer | 必选 | TX中inputs的数量 |
 | nLockTime | Unsigned Integer | 必选 | TX的nLockTime |
 | blockHash | String | 可选 | TX所在区块的hash |
 | indexInBlock | Unsigned Integer | 可选 | TX在区块中的位置，0为起始位置 |
