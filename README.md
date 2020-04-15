@@ -296,3 +296,81 @@ POST body:
   }
 }
 ```
+
+### block基本信息查询
+
+| 方法 | URI         |
+| ---- | ----------- |
+| GET  | /block/desc |
+
+| 参数   | 可选/必选    | 说明     |
+| ------ | ------------ | -------- |
+| height | 与hash二选一 | 区块高度 |
+| hash   | 区块hash     | 区块hash |
+
+#### 示例
+
+##### 请求
+
+https://api.bsv.info/block/desc?height=630659
+
+https://api.bsv.info/block/desc?hash=00000000000000000346123e7aa46d017eec10cbc2386c2f1f6eae212a05201a
+
+##### 应答
+
+```json
+{
+  "data": {
+    "size": 999099,
+    "txCount": 2972,
+    "header": {
+      "hash": "00000000000000000346123e7aa46d017eec10cbc2386c2f1f6eae212a05201a",
+      "version": 536870912,
+      "prevHash": "00000000000000000181715369fb4b3aa7a50cb731587e81079f5f1fb0303cbd",
+      "merkleRoot": "36b47568d199a83cdd31934277e38680a7dce492415f446f626d3ff8ee53b3b8",
+      "time": 1586915006,
+      "bits": 402973465,
+      "nonce": 1562244590
+    }
+  }
+}
+```
+
+| 字段    | 类型             | 可选/必选 | 说明             |
+| ------- | ---------------- | --------- | ---------------- |
+| size    | Unsigned Integer | 必选      | 区块的字节数大小 |
+| txCount | Unsigned Integer | 必选      | 区块中的TX数量   |
+| header  | Object           | 必选      | 区块头信息       |
+
+### block TXID 查询
+
+| 方法 | URI         |
+| ---- | ----------- |
+| GET  | /block/txid |
+
+| 参数   | 可选/必选      | 取值范围       | 默认值 | 说明               |
+| ------ | -------------- | -------------- | ------ | ------------------ |
+| height | 与hash二选一   |                |        | 区块高度           |
+| hash   | 与height二选一 |                |        | 区块hash           |
+| limit  | 可选           | 1 - 1000       | 100    | 最多返回多少个TXID |
+| offset | 可选           | 0 - 0xFFFFFFFF | 0      | 跳过多少个TXID     |
+
+#### 示例
+
+##### 请求
+
+https://api.bsv.info/block/txid?height=563638&offset=460396
+
+##### 应答
+
+```json
+{
+  "data": [
+    "4bf1f03b411ba89cd43b9259a80b3af92047864ee4401949e118114bff6e0200",
+    "2a3d0d5b04e75a5e953ec6cc6b717ceca7b1209dc54fa8390c49036512e50100",
+    "8ec2b07e368f5359313e3bcb1185c7e5f7cc3959393e76845c3da8f871210100",
+    "8768cf8a26a494f0196a18d7d74384df540bb275319ee99288930e0f368c0000"
+  ]
+}
+```
+
